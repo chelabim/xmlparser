@@ -1,3 +1,4 @@
 # XML parser
-This solution works on Linux, it can parse an XML file from a shell script.
+This solution is ideal to industrialize your IT infrastructure
+You can use this library in your scripts to parse an XML file.
 
