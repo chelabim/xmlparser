@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<devices platform="FELIX_15.4">
+    <device address="10.70.0.52" hostname="PCYYYX20">
+        <environment name="E199"/>
+    </device>
+    <device address="10.70.0.53" hostname="PCYYYX21">
+        <environment name="E111"/>
+    </device>
+    <device address="10.70.0.54" hostname="PCYYYX22">
+        <environment name="E451"/>
+        <environment name="E131"/>
+    </device>
+    <device address="10.70.0.55" hostname="PCYYYX23">
+        <environment name="E131"/>
+    </device>
+    <device address="10.70.0.56" hostname="PCYYYX24">
+        <environment name="E531"/>
+    </device>
+    <device address="10.70.0.57" hostname="PCYYYX25">
+        <environment name="E221"/>
+    </device>
+    <device address="10.36.0.95" hostname="PCYYYX40">
+        <environment name="E981"/>
+    </device>
+    <device address="10.36.0.96" hostname="PCYYYX41">
+        <environment name="E998"/>
+        <environment name="E008"/>
+    </device>
+    <device address="10.36.0.93" hostname="PCYYYX42">
+        <environment name="E3CD"/>
+    </device>
+    <device address="10.36.0.94" hostname="PCYYYX43">
+        <environment name="E444"/>
+    </device>
+</devices>

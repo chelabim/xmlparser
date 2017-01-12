@@ -1,0 +1,79 @@
+#! /bin/bash
+
+#                             (xml parser solution for UNIX/Linux)
+#   Author: Mohammed CHELABI
+#   Create date:  2013
+#   Version: 1.0
+#   ------------
+# This library contains the main functions to parse an xml file.
+# Important: libxml2-utils must be installed.
+
+# Check if Xml file is valid.
+isXMLDocumentValid (){
+    local DOCUMENT_XML="${1}"
+
+    xmllint --noout ${DOCUMENT_XML} >/dev/null 2>&1
+    if [[ $? != 0 ]]
+    then
+        echo "ERROR: ${DOCUMENT_XML} file is not valid!" >&2
+        exit 1
+    fi
+}
+
+
+# Generic function to parse an xml file  using the 'xmllint' and 'sed' coammands.
+xmlParseAndSubs(){
+    local XPATH="${1}"
+    local XMLFILE="${2}"
+
+    if [[ ! -f sed.arguments.conf ]];then
+        echo "ERROR: 'sed.arguments.conf' no such file!" >&2
+        exit 1
+    fi
+
+    echo "cat ${XPATH}" | xmllint --shell "${XMLFILE}" |sed -f sed.arguments.conf
+}
+
+# Generic function to extract any kind of elements from the xml file.
+getValue(){
+    local XPATH="${1}"
+    local XMLFILE="${2}"
+
+    if [[ ! -z "${XMLFILE}" ]]
+    then
+        if [[ ! -e ${XMLFILE} ]]
+        then
+            echo "ERROR: '${XMLFILE}' no such file!" >&2
+            exit 1
+        fi
+        isXMLDocumentValid  "${XMLFILE}"
+    else
+        echo "ERROR: The function 'getValue' requires an xml file!" >&2
+        exit 1
+    fi
+
+    xmlParseAndSubs "${XPATH}" "${XMLFILE}"
+}
+
+# Generic function to count the number of elements from the xml file.
+countValue(){
+    local XPATH="${1}"
+    local XMLFILE="${2}"
+
+    if [[ ! -z "${XMLFILE}" ]]
+    then
+        if [[ ! -e "${XMLFILE}" ]]
+        then
+            echo "ERROR: '${XMLFILE}' no such file!" >&2
+            exit 1
+        fi
+        isXMLDocumentValid  "${XMLFILE}"
+    else
+        echo "ERROR: The function 'getValue' requires an xml file!" >&2
+        exit 1
+    fi
+
+    NODE_NUMBER=$(xmlParseAndSubs "${XPATH}" "${XMLFILE}" |wc -l)
+    echo  "${NODE_NUMBER}"
+}
+

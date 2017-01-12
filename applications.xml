@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+
+<!--This is an example structure of applications xml file.-->
+
+<applications platform="FELIX_15.4">
+    <application appli_name="CDXE238">
+        <environment name="E238"/>
+    </application>
+    <application appli_name="CDXE3CB">
+        <environment name="E111"/>
+    </application>
+    <application appli_name="CDXE2CV">
+        <environment name="E111"/>
+    </application>
+    <application appli_name="CDXE244">
+        <environment name="E218"/>
+    </application>
+    <application appli_name="CDXE454">
+        <environment name="E235"/>
+    </application>
+    <application appli_name="CDXE111">
+        <environment name="E245"/>
+    </application>
+    <application appli_name="PCENINFFLX">
+        <environment name="E238"/>
+    </application>
+</applications>

@@ -1,0 +1,69 @@
+#! /bin/bash
+
+
+#                             (xml parser solution for UNIX/Linux)
+#   Author: Mohammed CHELABI
+#   Create date:  2013
+#   Version: 1.0
+#   ------------
+# This library contains some useful functions models to parse an xml file.
+# For example, I use the files xml applications.xml and devices.xml.
+# Pre-requisites:
+# - We must include the library 'lib_xparser'.
+#
+# You can replace the XML tags to parse your Xml files.
+# You can create your own functions using these templates. 
+
+
+
+
+# Include the library 'lib_xparser'
+. ./lib_xparser
+
+
+# Extract all attributes 'hostname' from XML file
+getAllNode(){
+    XML_FILE=${1}
+
+    HOSTS=$(getValue "//devices/device/@hostname" ${XML_FILE})
+    echo "$HOSTS"
+}
+
+# Count the number of attributes 'hostname'
+getNodeCount(){
+    XML_FILE=${1}
+    HOSTS=$(countValue  "//devices/device/@hostname" ${XML_FILE})
+    echo "$HOSTS"
+}
+
+# Extract all attributes 'appli_name' from XML file
+getAllApplication(){
+    XML_FILE=${1}
+
+    APPLI=$(getValue "//applications/application/@appli_name" ${XML_FILE})
+    echo "$APPLI"
+}
+
+getApplicationCount(){
+    XML_FILE=${1}
+
+    APPLI=$(countValue  "//applications/application/@appli_name" ${XML_FILE})
+    echo "$APPLI"
+}
+
+# Extract environment name by 'hostname'
+getEnvByNode(){
+    XML_FILE=${2}
+
+    ENV=$(getValue "//devices/device[@hostname='$1']/environment/@name" ${XML_FILE})
+    echo "${ENV}"
+}
+
+# Extract all attributes 'appli_name' by 'Env' name
+getAllAppliByEnv(){
+    XML_FILE=${2}
+
+    APPLIS=$(getValue "//applications/application/environment[@name='$1']/../@appli_name" ${XML_FILE})
+    echo "${APPLIS}"
+}
+
